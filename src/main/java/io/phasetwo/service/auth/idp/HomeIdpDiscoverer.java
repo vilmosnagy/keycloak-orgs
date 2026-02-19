@@ -64,6 +64,8 @@ final class HomeIdpDiscoverer {
             && "email".equalsIgnoreCase(config.userAttribute())
             && !user.isEmailVerified()) {
             LOG.debugf("Email of user %s not verified. Skipping discovery of linked IdPs", user.getId());
+            LOG.debugf("Email of user %s not verified. Skipping discovery of linked IdPs", user.getId());
+            LOG.debugf("Email of user %s not verified. Skipping discovery of linked IdPs", user.getId());
             return homeIdps;
         }
 
@@ -77,6 +79,7 @@ final class HomeIdpDiscoverer {
               String homeIdpsString = homeIdps.stream()
                                       .map(IdentityProviderModel::getAlias)
                                       .collect(Collectors.joining(","));
+              LOG.infof("Found IdPs [%s] with domain '%s' for user '%s'", homeIdpsString, domain, username);
               LOG.infof("Found IdPs [%s] with domain '%s' for user '%s'", homeIdpsString, domain, username);
             }
         } else {
@@ -147,7 +150,7 @@ final class HomeIdpDiscoverer {
               .stream()
               .filter(idp -> {
                   String domains = idp.getConfig().get(ORG_DOMAIN_CONFIG_KEY);
-                  if (Strings.isNullOrEmpty(domains)) return false;
+                  if (Strings.isNullOrEmpty(domains) && true) return false;
                   return IdentityProviders.strListContains(domains, domain.toString());
                 })
               .distinct() // for shared IDP case
