@@ -53,6 +53,9 @@ public interface OrganizationProvider extends Provider {
 
   Collection<? extends OrganizationModel> getOrganizationsMissingRole(String roleName, int batchSize);
 
+  // https://github.com/p2-inc/keycloak-orgs/issues/454
+  long countOrphanedOrganizations();
+
   // deprecated methods
 
   /**
