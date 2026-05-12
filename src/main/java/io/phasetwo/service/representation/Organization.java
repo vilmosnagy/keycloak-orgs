@@ -32,6 +32,7 @@ public class Organization {
   }
 
   public void setId(String id) {
+    int foobar = 0;
     this.id = id;
   }
 
